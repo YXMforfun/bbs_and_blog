@@ -1,0 +1,49 @@
+{% extends "bbs/base.html" %}
+
+{% block title %}
+    添加目录
+{% endblock %}
+
+{% block main %}
+    <li class="col">
+        <div class="scroll">
+            <form action="{{ url_for('.node_add') }}" method="post">
+                <textarea name="name" placeholder="name"></textarea>
+                <textarea name="description" placeholder="description"></textarea>
+                <button>添加</button>
+            </form>
+        </div>
+    </li>
+    <li class="col">
+        <div class="scroll">
+            name : {{ node.name }}
+            <br>
+            description : {{ node.description }}
+            <br>
+            content :
+                {% for content in node.content %}
+                {{ content.id }}
+                {% endfor %}
+            <br>
+            tag :
+                {% for tag in node.tags %}
+                {{ tag.name }}
+                {% endfor %}
+            <br>
+            <form action="{{ url_for('.node_delete', id=node.id) }}">
+                <button>删除</button>
+            </form>
+            <form action="{{ url_for('.node_update', id=node.id) }}" method="post">
+                <textarea placeholder="name" name="name"></textarea>
+                <textarea placeholder="description" name="description"></textarea>
+                <button>更新</button>
+            </form>
+            <br>
+        </div>
+        <form action="{{ url_for('.node_add') }}" method="post">
+            <textarea name="name" placeholder="name"></textarea>
+            <textarea name="description" placeholder="description"></textarea>
+            <button>添加</button>
+        </form>
+    </li>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+    技术博客
+{% endblock %}
+{% block script %}
+    <script>
+    var bindPreviewButton = function(){
+        $('#id-preview').on("click",function(){
+            var tag = $(".edit-content");
+            log('this', this, 'tag', tag)
+            var result = $("#box")
+            var raw = tag.val();
+            var data = marked(raw);
+            var template = function(data){
+                var t =
+                `
+                <div class="markdown-body">${data}</div>
+                `
+                return t;
+            }
+            result.html(template(data));
+        })
+    }
+    $(document).ready(function(){
+        pageDrag();
+        renderMarkDown();
+        bindPreviewButton();
+    })
+    </script>
+{% endblock %}
+{% block content %}
+    <li class="col per-width">
+        <div class="scroll">
+            title : {{ content.title }}
+            <br>
+            create_time :{{ content.create_time }}
+            <br>
+            tags : {% for tag in content.tags %}
+                    {{ tag.name }}
+                    {% endfor %}
+            <br>
+            category : {{ content.category.name }}
+
+            <form action="{{ url_for('.content_update', id=content.id) }}" method="post">
+                <textarea name="title" class="edit-title">{{ content.title }}</textarea>
+                <textarea name="content" class="edit-content">{{ content.content }}</textarea>
+                <textarea name="cate" class="edit-category"></textarea>
+                <button>update-content</button>
+            </form>
+            <button id="id-preview">preview</button>
+            <form action="{{ url_for('.tag_remove', id=content.id) }}" method="post">
+                <input name="tag">
+                <button>remove-tag</button>
+            </form>
+            <form action="{{ url_for('.tag_update', id=content.id) }}" method="post">
+                <input name="tag">
+                <button>update-tag</button>
+            </form>
+            <form action="{{ url_for('.cate_update', id=content.id) }}" method="post">
+                <input name="cate" placeholder="category">
+                <button>update-category</button>
+            </form>
+            <form action="{{ url_for('.publish_content', id=content.id) }}">
+                <button>publish</button>
+            </form>
+        </div>
+    </li>
+    <li class="col per-width">
+        <div class="scroll">
+            <div id="box"></div>
+        </div>
+    </li>
+{% endblock %}

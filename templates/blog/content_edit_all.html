@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+    文章目录
+{% endblock %}
+
+{% block content %}
+    <li class="col">
+        {% for content in contents %}
+        <div class="scroll">
+            <a href="{{ url_for('.content_edit', id=content.id) }}">{{ content.title }}</a>
+            <br>
+            create_time :{{ content.create_time }}
+            <br>
+            tags : {% for tag in content.tags %}
+                    {{ tag.name }}
+                    {% endfor %}
+            <br>
+            category : {{ content.category.name }}
+        </div>
+        {% endfor %}
+    </li>
+{% endblock %}

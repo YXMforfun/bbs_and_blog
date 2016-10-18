@@ -1,0 +1,40 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+    技术博客
+{% endblock %}
+
+{% block content %}
+    <li class="col">
+        <div class="scroll">
+
+        </div>
+    <form action="{{ url_for('.draft_add') }}" method="post">
+        <input name="title" placeholder="title">
+        <input name="content" placeholder="content">
+        <input name="tag" placeholder="tag">
+        <input name="cate" placeholder="category">
+        <button>add</button>
+    </form>
+
+    </li>
+    {% for content in contents %}
+    <li class="col">
+        <div class="scroll">
+            title : {{ content.title }}
+            <br>
+            create_time :{{ content.create_time }}
+            <br>
+            content: {{ content.content }}
+            <br>
+            tags : {% for tag in content.tags %}
+                    {{ tag.name }}
+                    {% endfor %}
+            <br>
+            category : {{ content.category.name }}
+            <form action="{{ url_for('.publish_content', id=content.id) }}">
+                <button>publish</button>
+            </form>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "bbs/base.html" %}
+
+{% block title %}
+    添加标签
+{% endblock %}
+
+{% block main %}
+    <li class="col">
+        <div class="scroll">
+            <form action="{{ url_for('.tag_add') }}" method="post">
+                <textarea name="name" placeholder="name"></textarea>
+                <textarea name="node" placeholder="node"></textarea>
+                <button>添加</button>
+            </form>
+        </div>
+    </li>
+    <li class="col">
+        <div class="scroll">
+            {% for tag in tags %}
+            <br>
+            tag : {{ tag.name }}
+            <br>
+            node_id : {{ tag.node_id }}
+            <br>
+            node : {{ tag.node.name }}
+            <br>
+            content :
+                {% for content in tag.content %}
+                {{ content.id }}
+                {% endfor %}
+            <br>
+            <form action="{{ url_for('.tag_delete', id=tag.id) }}">
+                <button>删除</button>
+            </form>
+            <form action="{{ url_for('.tag_update', id=tag.id) }}" method="post">
+                <textarea placeholder="name" name="name"></textarea>
+                <textarea placeholder="node" name="node"></textarea>
+                <button>更新</button>
+            </form>
+            <br>
+            {% endfor %}
+        </div>
+    </li>
+{% endblock %}

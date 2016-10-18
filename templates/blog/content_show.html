@@ -1,0 +1,45 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+    技术博客
+{% endblock %}
+{% block script %}
+    <script>
+        $(document).ready(function(){
+            pageDrag();
+            renderMarkDown();
+        })
+    </script>
+{% endblock %}
+{% block content %}
+    {% for content in contents %}
+    <li class="col per-width">
+        <div class="scroll">
+            <div class="content">
+                <div class="content-title">
+                    {{ content.title }}
+                </div>
+                {% for tag in content.tags %}
+                    <div class="content-tag border">
+                    {{ tag.name }}
+                    </div>
+                {% endfor %}
+                <div class="content-description">
+                    <div class="content-category">
+                    <pre>{{ content.category.name }}    No.{{ content.id }}</pre>
+                    </div>
+                </div>
+                <div class="content-text border">
+                    <div class="content-body border">
+                        <div class="markdown-body">{{ content.content }}
+                        </div>
+                    </div>
+                </div>
+                <div class="content-time">
+                   发表于： {{ content.get_create_time() }}
+                </div>
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,140 @@
+html {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0px;
+    background-color: #e6e6e6;
+    min-width: 820px;
+    padding: 0px;
+    font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+
+}
+
+.bbs-top {
+    border-top : 3px #00AA98 solid;
+    background: #515050;
+    height: 60px;
+    text-align: center;
+    padding: 0px 20px 0px 20px;
+    background-size: 44px;
+}
+.bbs-header {
+    margin: 0 auto;
+    min-width: 600px;
+    max-width: 1440px;
+    height: 60px;
+}   
+
+.bbs-header-table {
+    width: 100%;
+    border: 0;
+    border-spacing: 0;
+}
+.bbs-logo {
+    width: 191px;
+    height: 60px;
+}
+
+.bbs-logo a{
+    display: block;
+    width: 190px;
+    height: 56px;
+    background: url("image/logo.png") left center no-repeat;
+}
+
+.bbs-global-nav {
+    width: auto;
+    min-width: 300px;
+    text-align: left;
+    height: 60px;
+}
+.td-w40 {
+    width: 40px;
+}
+.bbs-user {
+    height: 60px;
+    width: 300px;
+}
+
+.bbs-glo-nav-link {
+    display: inline-block;
+    text-decoration: none;
+    line-height: 61px;
+    color : #fff;
+    margin: 0 10px;
+    height: 100%;
+    font-weight: normal;
+    font-size: 20px;
+}
+
+.bbs-user-link {
+    display: inline-block;
+    width: 60px;
+    height: 25px;
+    color : #E9E9E9;
+    margin : 15px 0;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 25px;
+    text-align: center;
+    white-space: nowrap;
+    background-image: none;
+    cursor: pointer;
+    outline: 0px none;
+    border-radius: 1000px;
+    border: 1px solid #8C8C8C;
+    text-decoration : none;
+}
+.bbs-user-link:hover {
+    background-color: #00AA98;
+    border: 1px solid #00AA98;
+}
+.bbs-main {
+    min-height: 100%;
+}
+
+.bbs-content {
+    padding: 20px;
+    padding-bottom: 150px;
+}
+
+.bbs-bottom {
+    color : #fff;
+    background: #203237;
+    border-top: 3px #00AA98 solid;
+    padding: 0px 10px 0px 10px;
+    height: 150px;
+    margin-top: -150px;
+}
+
+.bbs-bottom-content {
+    min-width: 600px;
+    max-width: 1100px;
+    margin: 0px auto 0px auto;
+}
+.bbs-bottom-about {
+    padding: 20px 0px;
+    font-weight: normal;
+    font-size: 15px;
+}
+.bbs-bottom-about a{
+    color : #fff;
+    text-decoration: none;
+}
+.bbs-bottom-info {
+    padding: 20px 0px;
+}
+
+.fl-l {
+    float: left;
+}
+
+
+.fl-r {
+    float: right;
+}

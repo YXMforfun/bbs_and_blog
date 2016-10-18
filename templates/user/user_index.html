@@ -1,0 +1,91 @@
+{% extends "bbs/base.html" %}
+
+{% block title %}
+    forfun's blog
+{% endblock %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/static/css/user.css">
+    <link rel="stylesheet" href="/static/css/alertify.core.css">
+    <link rel="stylesheet" href="/static/css/alertify.default.css">
+{% endblock %}
+{% block script %}
+    <script src="/static/js/alertify.min.js"></script>
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/user.js"></script>
+{% endblock %}
+{% block main %}
+    <div class="form square-wrap">
+        <div class="form-inner">
+            <div class="form-title">
+                <div class="tab">
+                    <a id="id-a-signup" class="margin-r-25" href="#">注册</a>
+                    <a id="id-a-login" href="#">登录</a>
+                    <div class="tab-block"></div>
+                </div>
+            </div>
+            <div class="height-20"></div>
+            <div id="id-div-signup" class="sign-form fl-l">
+                <div class="form-textinput">
+                    <div class="height-20"></div>
+                    <div class="overflow-hid">
+                        <label class="label width-70 margin-r-20 fl-l">用户名</label>
+                        <div class="input-wrapper pos-relate fl-l">
+                            <input class="input-text" id="id-input-username" type="text" placeholder="用户名（不少于 6 位）" required/>
+                            <span id="id-check-username" class="pos-absolu warn"></span>
+                        </div>
+                    </div>
+                    <div class="height-40"></div>
+                        <div class="overflow-hid">
+                        <label class="label width-70 margin-r-20 fl-l">密码</label>
+                        <div class="input-wrapper pos-relate fl-l">
+                            <input class="input-text" id="id-input-password" type="text" placeholder="密码（不少于 6 位）" required/>
+                            <span id="id-check-password" class="pos-absolu warn"></span>
+                        </div>
+                    </div>
+                    <div class="height-40"></div>
+                    <div class="overflow-hid">
+                        <label class="label width-70 margin-r-20 fl-l">重复密码</label>
+                        <div class="input-wrapper pos-relate fl-l">
+                            <input class="input-text" id="id-input-password2" type="text" placeholder="密码（不少于 6 位）" required/>
+                             <span id="id-check-password2" class="pos-absolu warn"></span>
+                        </div>
+                    </div>
+                    <div class="height-20"></div>
+                </div>
+                <div class="height-20"></div>
+                <div class="margin-l-400 overflow-hid">
+                    <button id="id-button-register" class="button-big fl-l margin-r-20">注册</button>
+                </div>
+                <div class="height-20"></div>
+            </div>
+            <div id="id-div-login" class="sign-form fl-l">
+                <div class="form-textinput">
+                    <div class="height-20"></div>
+                    <div class="overflow-hid">
+                        <label class="label width-70 margin-r-20 fl-l">用户名</label>
+                        <div class="input-wrapper pos-relate fl-l">
+                            <input class="input-text" id="id-input-login-username" type="text" placeholder="用户名" required/>
+                        </div>
+                    </div>
+                    <div class="height-40"></div>
+                    <div class="overflow-hid">
+                        <label class="label width-70 margin-r-20 fl-l">密码</label>
+                        <div class="input-wrapper pos-relate fl-l">
+                            <input class="input-text" id="id-input-login-password" type="text" placeholder="密码" required/>
+                        </div>
+                    </div>
+                    <div class="height-20"></div>
+                </div>
+
+                <div class="height-20"></div>
+                <div class="margin-l-400 overflow-hid">
+                    <button id="id-button-login" class="button-big fl-l margin-r-20" type="submit">进入</button>
+                </div>
+                <div class="height-90"></div>
+            </div>
+            <div class="form-right fl-l">
+                <img class="img" src="/static/image/tree.png"></img>
+            </div>
+        </div>
+    </div>
+{% endblock %}

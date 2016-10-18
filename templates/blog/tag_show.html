@@ -1,0 +1,44 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+    添加标签
+{% endblock %}
+
+{% block content %}
+    <li class="col">
+        <div class="scroll">
+            <form action="{{ url_for('.tag_add') }}" method="post">
+                <input name="name" placeholder="name">
+                <input name="cate" placeholder="category">
+                <button>添加</button>
+            </form>
+        </div>
+    </li>
+    <li class="col">
+        <div class="scroll">
+            {% for tag in tags %}
+            <br>
+            tag : {{ tag.name }}
+            <br>
+            cate_id : {{ tag.cate_id }}
+            <br>
+            category : {{ tag.category.name }}
+            <br>
+            content :
+                {% for content in tag.content %}
+                {{ content.id }}
+                {% endfor %}
+            <br>
+            <form action="{{ url_for('.tag_delete', id=tag.id) }}">
+                <button>删除</button>
+            </form>
+            <form action="{{ url_for('.tag_update', id=tag.id) }}" method="post">
+                <input placeholder="name" name="name">
+                <input placeholder="category" name="cate">
+                <button>更新</button>
+            </form>
+            <br>
+            {% endfor %}
+        </div>
+    </li>
+{% endblock %}

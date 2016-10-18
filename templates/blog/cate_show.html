@@ -1,0 +1,52 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+    添加目录
+{% endblock %}
+
+{% block content %}
+    <li class="col">
+        <div class="scroll">
+            <form action="{{ url_for('.cate_add') }}" method="post">
+                <input name="name" placeholder="name">
+                <input name="description" placeholder="description">
+                <button>添加</button>
+            </form>
+        </div>
+    </li>
+    <li class="col">
+        <div class="scroll">
+            {% for cate in cates %}
+            <br>
+            name : {{ cate.name }}
+            <br>
+            description : {{ cate.description }}
+            <br>
+            content :
+                {% for content in cate.content %}
+                {{ content.id }}
+                {% endfor %}
+            <br>
+            tag :
+                {% for tag in cate.tags %}
+                {{ tag.name }}
+                {% endfor %}
+            <br>
+            <form action="{{ url_for('.cate_delete', id=cate.id) }}">
+                <button>删除</button>
+            </form>
+            <form action="{{ url_for('.cate_update', id=cate.id) }}" method="post">
+                <input placeholder="name" name="name">
+                <input placeholder="description" name="description">
+                <button>更新</button>
+            </form>
+            <br>
+            {% endfor %}
+        </div>
+        <form action="{{ url_for('.cate_add') }}" method="post">
+            <input name="name" placeholder="name">
+            <input name="description" placeholder="description">
+            <button>添加</button>
+        </form>
+    </li>
+{% endblock %}
