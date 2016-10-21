@@ -3,38 +3,48 @@
 {% block title %}
     技术博客
 {% endblock %}
-
+{% block script %}
+    <script>
+    var bindPreviewButton = function(){
+        $('#id-preview').on("click",function(){
+            var tag = $(".edit-content");
+            log('this', this, 'tag', tag)
+            var result = $("#box")
+            var raw = tag.val();
+            var data = marked(raw);
+            var template = function(data){
+                var t =
+                `
+                <div class="markdown-body">${data}</div>
+                `
+                return t;
+            }
+            result.html(template(data));
+        })
+    }
+    $(document).ready(function(){
+        pageDrag();
+        renderMarkDown();
+        bindPreviewButton();
+    })
+    </script>
+{% endblock %}
 {% block content %}
-    <li class="col">
+    <li class="col per-width">
         <div class="scroll">
-
-        </div>
-    <form action="{{ url_for('.draft_add') }}" method="post">
-        <input name="title" placeholder="title">
-        <input name="content" placeholder="content">
-        <input name="tag" placeholder="tag">
-        <input name="cate" placeholder="category">
-        <button>add</button>
-    </form>
-
-    </li>
-    {% for content in contents %}
-    <li class="col">
-        <div class="scroll">
-            title : {{ content.title }}
-            <br>
-            create_time :{{ content.create_time }}
-            <br>
-            content: {{ content.content }}
-            <br>
-            tags : {% for tag in content.tags %}
-                    {{ tag.name }}
-                    {% endfor %}
-            <br>
-            category : {{ content.category.name }}
-            <form action="{{ url_for('.publish_content', id=content.id) }}">
-                <button>publish</button>
+            <form action="{{ url_for('.draft_add') }}" method="post">
+                <textarea name="title" class="edit-title"></textarea>
+                <textarea name="content" class="edit-content"></textarea>
+                <textarea name="cate" class="edit-category"></textarea>
+		<textarea name="tag"></textarea>
+                <button>add-draft</button>
             </form>
+            <button id="id-preview">preview</button>
         </div>
-    {% endfor %}
+    </li>
+    <li class="col per-width">
+        <div class="scroll">
+            <div id="box"></div>
+        </div>
+    </li>
 {% endblock %}
