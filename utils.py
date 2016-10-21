@@ -16,11 +16,9 @@ def current_user():
         return u
 
 def admin_required(f):
-    log('admin', f)
     @wraps(f)
     def function(*args, **kwargs):
         u_id = session.get('uid')
-        log('admin')
         if not User.query.get(u_id).is_admin() :
             abort(404)
         return f(*args, **kwargs)
@@ -28,7 +26,6 @@ def admin_required(f):
 
 
 def login_required(f):
-    log('login', f)
     @wraps(f)
     def function(*args, **kwargs):
         u = current_user()
