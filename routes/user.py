@@ -24,21 +24,17 @@ def logout():
 
 
 @main.route('/profile/change', methods=['POST'])
+@login_required
 def profile_change():
     form = request.form
     u = current_user()
-    if u is not None and is_submitted(form):
-        u.profile = form.get('profile')
-        u.save()
-        return redirect(url_for('.profile'))
+    u.profile = form.get('profile','')
+    u.save()
     return render_template('user/profile_change.html')
 
 
 @main.route('/profile')
+@login_required
 def profile():
     u = current_user()
-    if u is not None:
-        profile = u.profile
-        return render_template('user/profile.html', profile=profile, username=u.username,
-                               id=u.id)
-    return redirect(url_for('.index'))
+    return render_template('user/profile.html', u=u)

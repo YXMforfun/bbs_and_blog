@@ -8,6 +8,8 @@ main = Blueprint("bbs_Tag", __name__)
 
 
 @main.route('/')
+@login_required
+@admin_required
 def tag_show():
     u = current_user()
     t = bbsTag.query.all()
@@ -15,6 +17,8 @@ def tag_show():
 
 
 @main.route('/<int:id>')
+@login_required
+@admin_required
 def tag_get(id):
     u = current_user()
     t = bbsTag.query.get(id)

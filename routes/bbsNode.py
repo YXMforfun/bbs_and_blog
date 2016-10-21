@@ -9,6 +9,8 @@ main = Blueprint("bbs_node", __name__)
 
 
 @main.route('/')
+@login_required
+@admin_required
 def node_list():
     u = current_user()
     n = bbsNode.query.all()
@@ -16,6 +18,8 @@ def node_list():
 
 
 @main.route('/<int:id>')
+@login_required
+@admin_required
 def node_get(id):
     u = current_user()
     n = bbsNode.query.get(id)

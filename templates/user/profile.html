@@ -1,13 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>forfun's Blog</title>
-</head>
-<body>
-    <div class="username">用户名 {{username}} id {{ id }}</div>
-    <br>
-    <div class="profile">简介 {{ profile }}</div>
-    <a href="/user/profile/change">修改简介</a>
-</body>
-</html>
+{% extends "bbs/base.html" %}
+
+{% block title %}
+    Just for fun!
+{% endblock %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/static/css/user.css">
+{% endblock %}
+{% block main %}
+    <div class="form square-wrap">
+        <div class="form-inner">
+            <div class=""></div>
+        </div>
+    </div>
+{% endblock %}
