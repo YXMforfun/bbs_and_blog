@@ -1,10 +1,17 @@
 from api import *
 from models.user import User
-from utils import ajax_response, log
+from utils import ajax_response, log, is_safe_url
 
 
 main = Blueprint('api_user', __name__)
 Model = User
+
+def safe_redirect_ajax(form, json):
+        next = form.get('next', '')
+        if is_safe_url(next):
+            json['next'] = next
+        else :
+            json['next'] = url_for('bbs_content.content_show', _external=True)
 
 
 @main.route('/check/username', methods=['POST'])
@@ -24,7 +31,7 @@ def register():
     if valid:
         u.save()
         session['uid'] = u.id
-        json['next'] = url_for('weibo.index', _external=True)
+        safe_redirect_ajax(form, json)
     return ajax_response(valid=valid, data=json, message=message)
 
 
@@ -37,7 +44,7 @@ def login():
     json = u.json()
     if valid:
         session['uid'] = user.id
-        json['next'] = url_for('bbs_content.content_show', _external=True)
+        safe_redirect_ajax(form, json)
     return ajax_response(valid=valid, data=json, message=message)
 
 

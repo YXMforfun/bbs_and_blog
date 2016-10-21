@@ -108,6 +108,7 @@ var loginForm = function(){
     var keys = [
         'username',
         'password',
+	'next'
     ];
     var loginPrefix = 'id-input-login-';
     var form = formFromKeys(keys, loginPrefix);
@@ -117,7 +118,8 @@ var loginForm = function(){
 var registerForm = function(){
     var keys = [
         'username',
-        'password'
+        'password',
+	'next'
     ];
     var registerPrefix = 'id-input-';
     var form = formFromKeys(keys, registerPrefix);

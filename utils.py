@@ -3,6 +3,7 @@ from models.user import User
 import json
 from datetime import datetime, date
 from functools import wraps
+from urllib.parse import urlparse, urljoin
 
 def log(*args):
     print(*args)
@@ -59,3 +60,11 @@ def ajax_response(valid, data=[], message=''):
     else:
         form['success'] = False
     return json.dumps(form, ensure_ascii=False, cls=Mixin_JsonEncoder)
+
+
+# 判断url 是否属于服务器的域名
+def is_safe_url(target):
+    ref_url = urlparse(request.host_url)
+    test_url = urlparse(urljoin(request.host_url, target))
+    return test_url.scheme in ('http', 'https') and \
+	ref_url.netloc == test_url.netloc

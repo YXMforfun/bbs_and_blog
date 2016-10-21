@@ -1,6 +1,6 @@
 from models.user import User
 from routes import *
-from utils import current_user, login_required
+from utils import current_user, login_required,log
 
 main = Blueprint('user', __name__)
 
@@ -12,7 +12,7 @@ def index():
     u = current_user()
     if u is not None:
         return redirect('/weibo')
-    return render_template('user/user_index.html')
+    return render_template('user/user_index.html', next=request.referrer)
 
 
 @main.route('/logout')
@@ -23,7 +23,7 @@ def logout():
     return redirect(url_for('.index'))
 
 
-@main.route('/profile/change', methods=['GET','POST'])
+@main.route('/profile/change', methods=['POST'])
 def profile_change():
     form = request.form
     u = current_user()
