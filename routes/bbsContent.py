@@ -13,14 +13,14 @@ main = Blueprint("bbs_content", __name__)
 def node_content(id):
     u = current_user()
     n = bbsNode.query.get(id)
-    c = bbsContent.query.filter_by(node_id=id).all()
+    c = bbsContent.query.filter_by(node_id=id).order_by(bbsContent.create_time.desc()).all()
     return render_template('bbs/content_list.html', contents=c, u=u, node=n)
 
 
 @main.route('/')
 def content_show():
     u = current_user()
-    c = bbsContent.query.all()
+    c = bbsContent.query.order_by(bbsContent.create_time.desc()).all()
     return render_template('bbs/content_show.html', contents=c, u=u)
 
 
