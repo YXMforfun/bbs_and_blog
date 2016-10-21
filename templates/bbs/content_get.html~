@@ -67,6 +67,7 @@
                         {% for c in content.comment %}
                         <div class="comment-cell border-top">
                             <div class="user-avatar">
+				<img src="{{ content.author.avatar_url}}">
                             </div>
                             <div class="content-body">
                                 <div class="content-username">

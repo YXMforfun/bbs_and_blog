@@ -23,9 +23,11 @@
             您现在所在的位置是
             <strong>{{ node.name }}</strong>
             <br>
+	{% if u %}
             <a href="{{ url_for('bbs_content.draft_show')}}">&nbsp;&nbsp;&nbsp;点击此处</a>
             <br>
             发表主题文章
+	{% endif %}
         </div>
     </div>
     <div class="content-main-content">

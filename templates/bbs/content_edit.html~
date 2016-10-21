@@ -1,7 +1,7 @@
 {% extends "bbs/base.html" %}
 
 {% block title %}
-    Just for fun!
+    技术博客
 {% endblock %}
 {% block script %}
     <script type="text/javascript" src="/static/js/renderMarkdown.js"></script>

@@ -1,18 +1,12 @@
 {% extends "bbs/base.html" %}
 
 {% block title %}
-    Just for fun!
+    技术博客
 {% endblock %}
 {% block css %}
     <link rel="stylesheet" type="text/css" href="/static/css/bbs_content.css">
 {% endblock %}
 {% block script %}
-    
-    <script>
-        $(document).ready(function(){
-            renderMarkDown();
-        })
-    </script>
 {% endblock %}
 {% block main %}
 <div class="content-main wrapper">
@@ -21,13 +15,11 @@
         <div class="height-50"></div>
         <div class="content-wrapper">
             您现在所在的位置是
-            <strong>{{ node.name }}</strong>
+            <strong>首页</strong>
             <br>
-	{% if u %}
             <a href="{{ url_for('bbs_content.draft_show')}}">&nbsp;&nbsp;&nbsp;点击此处</a>
             <br>
             发表主题文章
-	{% endif %}
         </div>
     </div>
     <div class="content-main-content">
@@ -39,10 +31,13 @@
                         <img src="{{ content.author.avatar_url}}">
                     </div>
                     <div class="content-body">
+                        <div class="content-node fl-r">
+                            {{ content.node.name }}
+                        </div>
                         <div class="content-username">
                             <strong>{{ content.author.username }}</strong>
                         </div>
-                         <div class="content-comment-info">
+                        <div class="content-comment-info">
                             <span class="content-comment-num">
                                 <a href="#">{{ content.comment.count() }}</a>
                             </span>
@@ -68,5 +63,5 @@
             {% endfor %}
         </div>
     </div>
-</div>   
+</div>
 {% endblock %}
