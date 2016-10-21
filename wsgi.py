@@ -1,4 +1,4 @@
-import app as bbs
+import run as bbs
 
 app = bbs.configured_app()
 
