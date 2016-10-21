@@ -39,7 +39,7 @@
                     <a href="/">首页</a>
                     <a href="/blog/content/cate/1">技术博客</a>
                     <a href="/blog/content/cate/2">闲谈日常</a>
-                    <a href="{{ url_for('bbs_content.content_show')}}">小打小闹</a>
+                    <a href="#">小打小闹</a>
                     <a href="#">个人简介</a>
                 </nav>
                 <div id="switch-site-nav">

@@ -126,7 +126,7 @@ def draft_add():
     c.gen_tags(form)
     c.user_id = u.id
     c.save()
-    return redirect(url_for('.draft_show'))
+    return redirect(url_for('.node_content', id=c.node_id))
 
 
 @main.route('/comment/add', methods=['POST'])
@@ -138,4 +138,4 @@ def add_comment():
     c.author_id = u.id
     c.content_id = form.get('content_id', -1)
     c.save()
-    return redirect(url_for('.draft_show'))
+    return redirect(url_for('.content_get', id=c.content_id))

@@ -2,6 +2,7 @@ from flask import Blueprint, request
 from models.weibo import Weibo
 from models.weiboComment import WeiboComment
 from utils import current_user, ajax_response, log, login_required
+from datetime import datetime
 
 main = Blueprint('api_weibo', __name__)
 
@@ -88,6 +89,7 @@ def update_comment(comment_id):
     is_auth, message = c.is_auth(u)
     if is_auth:
         c.body = form.get('body','')
+        c.update_time = datetime.utcnow()
         c.save()
     return ajax_response(is_auth, data=c.json(), message=message)
 

@@ -22,7 +22,6 @@ def register():
     valid, message = u.valid()
     json = u.json()
     if valid:
-        u.admin = True
         u.save()
         session['uid'] = u.id
         json['next'] = url_for('weibo.index', _external=True)
@@ -38,7 +37,7 @@ def login():
     json = u.json()
     if valid:
         session['uid'] = user.id
-        json['next'] = url_for('weibo.index', _external=True)
+        json['next'] = url_for('bbs_content.content_show', _external=True)
     return ajax_response(valid=valid, data=json, message=message)
 
 
