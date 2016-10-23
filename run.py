@@ -70,7 +70,7 @@ def server():
     print('server run')
     # app = configured_app()
     config = dict(
-        debug=True,
+        debug=False,
         host='0.0.0.0',
         port=3000,
     )
